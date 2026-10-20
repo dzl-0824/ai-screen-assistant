@@ -1,0 +1,28 @@
+# Local configuration and credentials
+config/
+**/config/
+settings.json
+*.env
+.env*
+*.pfx
+*.pem
+*.key
+# Dependencies and compiled artifacts
+.deps/
+build/
+dist/
+*.exe
+*.dll
+*.pdb
+*.zip
+*.rsp
+# Captured content
+Screenshots/
+Recordings/
+*.mp4
+*.mkv
+*.wav
+!assets/done.wav
+# Local editor state
+.vs/
+.idea/

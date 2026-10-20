@@ -1,0 +1,11 @@
+Recording runtime
+
+FFmpeg 9.0.2 essentials, separate executable, GPLv3 build by Gyan.
+License: FFmpeg-LICENSE.txt
+Build and source information: https://www.gyan.dev/ffmpeg/builds/
+FFmpeg source: https://ffmpeg.org/download.html
+
+NAudio 1.10.0, embedded .NET library, MIT license.
+License: NAudio-LICENSE.txt
+Source: https://github.com/naudio/NAudio
+Package: https://www.nuget.org/packages/NAudio/1.10.0

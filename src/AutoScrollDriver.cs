@@ -1,0 +1,7 @@
+using System;
+enum AutoScrollDecision {Wait,Scroll,Finish,Pause}
+sealed class AutoScrollDriver {
+ public bool Paused{get;private set;}public int UnchangedAttempts{get;private set;}bool waiting,appended;int stableTicks;DateTime sent,next;
+ public void Pause(){Paused=true;}
+ public AutoScrollDecision Observe(DateTime now,bool stable,bool added,ScrollAppendOutcome outcome){if(Paused)return AutoScrollDecision.Wait;if(added)appended=true;if(!stable){stableTicks=0;if(waiting&&(now-sent).TotalSeconds>7){Paused=true;return AutoScrollDecision.Pause;}return AutoScrollDecision.Wait;}stableTicks++;if(outcome==ScrollAppendOutcome.Limit)return AutoScrollDecision.Finish;if(waiting){if((now-sent).TotalMilliseconds<650||stableTicks<2)return AutoScrollDecision.Wait;if(appended){UnchangedAttempts=0;waiting=false;next=now.AddMilliseconds(180);}else if(outcome==ScrollAppendOutcome.Unchanged){UnchangedAttempts++;waiting=false;next=now.AddMilliseconds(300);if(UnchangedAttempts>=3)return AutoScrollDecision.Finish;}else if(outcome==ScrollAppendOutcome.Rejected){Paused=true;return AutoScrollDecision.Pause;}return AutoScrollDecision.Wait;}if(stableTicks>=2&&now>=next){waiting=true;appended=false;stableTicks=0;sent=now;return AutoScrollDecision.Scroll;}return AutoScrollDecision.Wait;}
+}
