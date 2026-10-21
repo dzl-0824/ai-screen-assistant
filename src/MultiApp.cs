@@ -22,7 +22,7 @@ class Shortcut {
 }
 class Settings {
  public string Url="https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",Model="qwen3.8-flash",Secret="",Language="简体中文";
- public bool ScrollTurbo=false;public RecordingSettings Recording=new RecordingSettings();public string ScreenshotDirectory=ShotStore.DefaultDirectory;public bool CompletionSound=true;public MailSettings Mail=new MailSettings();
+ public bool ScrollTurbo=true;public RecordingSettings Recording=new RecordingSettings();public string ScreenshotDirectory=ShotStore.DefaultDirectory;public bool CompletionSound=true;public MailSettings Mail=new MailSettings();
  public Shortcut[] Shortcuts=Defaults();
  public static string Dir=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"config");
  public static Shortcut[] Defaults(){return new[]{new Shortcut(0x33),new Shortcut(0x34),new Shortcut(0x35),new Shortcut(0x36),new Shortcut(0x37),new Shortcut(0x38),new Shortcut(0x32),new Shortcut(0x39),new Shortcut(0x31),new Shortcut(0xC0)};}
